@@ -1,0 +1,11 @@
+cData <- read.table("./new_data.txt", header = T, sep = ";")
+png("plot3.png", width = 480, height = 480, bg = "transparent")
+plot(days, cData$Sub_metering_1, type = "l" , xaxt = "n", xlab = "", ylab = "Energy sub metering")
+lines(days, cData$Sub_metering_2, type = "l" , xaxt = "n", xlab = "", ylab = "Energy sub metering", col = "red")
+lines(days, cData$Sub_metering_3, type = "l" , xaxt = "n", xlab = "", ylab = "Energy sub metering", col = "blue")
+
+axis(1, at= 1, labels="Thu")
+axis(1, at= ((2*max(days))/4), labels="Fri")
+axis(1, at= max(days), labels="Sat")
+legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty = c(1,1,1), col = c("black", "red", "blue"))
+dev.off()
